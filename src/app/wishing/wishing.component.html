@@ -1,0 +1,53 @@
+<div class="container">
+  <div class="main-greeting">
+    <div align="center html2canvas-ignore">
+      <div style="font-size: 17px;font-weight: 800;">
+
+        <div class="main_body">
+          <div style="color: deepskyblue;text-align: center;">
+            <h2 [@animateName]="name">{{name}}</h2>
+          </div>
+          <div>
+            <h3><p [@myAwesomeAnimation]="state" (click)="animateMe()" style="color: #76ff03">Wishing You</p></h3>
+            <h2 #plusElement style="color: red">HAPPY NEW YEAR</h2> <p id="demo"></p>
+          </div>
+        </div>
+        <p aling="center" style="font-size: 15px;color:#0000fe;"><b>My best wishes for you,<br>
+          Great start for Jan,<br>
+          Love for Feb,<br>
+          peace for March,<br>
+          No worries for April,<br>
+          fun for May,<br>
+          Joy for June to Nov,<br>
+          Happiness for Dec.<br>
+          Have a lucky and wonderful 2018<br><p></p></b><b></b></p><p></p>
+      </div>
+
+    </div>
+
+  </div>
+</div>
+<div>
+  <div *ngIf="!isFormSubmited">
+    <form class="form-container" [formGroup]="linkCreationForm" (ngSubmit)="createLink(linkCreationForm.value)">
+
+      <mat-form-field class="form-group"
+                      [ngClass]="{
+          'has-danger': fullName.invalid && (fullName.dirty || fullName.touched),
+          'has-success': fullName.valid && (fullName.dirty || fullName.touched)
+        }">
+        <input matInput #input maxlength="10" placeholder="Enter Your Name Here" type="text" class="form-control" formControlName="fullName" required>
+        <div class="form-control-feedback" *ngIf="fullName.errors && (fullName.dirty || fullName.touched)">
+          <p *ngIf="fullName.errors.required">Name is required</p>
+        </div>
+      </mat-form-field>
+      <!--<input type="text" class="form-control" formControlName="fullName" required>-->
+      <button mat-raised-button color="primary" type="submit" [disabled]="!linkCreationForm.valid">Create Your Link
+        <mat-icon aria-label="Example icon-button with a heart icon">favorite</mat-icon>
+      </button>
+    </form>
+  </div>
+  <!--<button mat-raised-button *ngIf="isFormSubmited" #whatsAppShareButton  color="primary"></button>-->
+  <div #whatsAppShare class="whatsAppShare">
+  </div>
+</div>
